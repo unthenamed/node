@@ -1,15 +1,26 @@
-name: CI
-on: push
+name: follow
+on:
+  schedule:
+    - cron: '*/30 * * * *'
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-
-      # ... other steps ...
-
-      - run: curl -sSf https://sshx.io/get | sh -s run
-      #      ^
-      #      └ This will open a remote terminal session and print the URL. It
-      #        should take under a second.
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+        
+    - name: Install dependencies
+      run: |
+        sudo apt update 
+        sudo apt install screen
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run Node
+      run: |
+       screen -D python node.py
