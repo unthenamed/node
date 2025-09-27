@@ -1,5 +1,6 @@
 name: main
 on:
+  workflow_dispatch:  # Manual trigger
   schedule:
     - cron: '*/30 * * * *'
 
@@ -17,11 +18,12 @@ jobs:
         
     - name: Install dependencies
       run: |
-        sudo apt update 
+        sudo apt update
+        sudo apt upgrade
         sudo apt install screen
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run Node
       run: |
-       screen -dmS python node.py       
+       screen -dmS node python node.py       
        curl -sSf https://sshx.io/get | sh -s run
