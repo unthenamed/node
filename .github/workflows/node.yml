@@ -84,16 +84,3 @@ jobs:
           logs/
           sessions/
         retention-days: 7
-
-    - name: Notify status
-      if: always()
-      uses: 8398a7/action-slack@v3
-      with:
-        status: ${{ job.status }}
-        text: |
-          NodePay Bot Run #${{ github.run_number }} - ${{ job.status }}
-          Python: ${{ matrix.python-version }}
-          Trigger: ${{ github.event_name }}
-        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
