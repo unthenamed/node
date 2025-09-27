@@ -1,6 +1,6 @@
-name: main
+name: node
 on:
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
   schedule:
     - cron: '*/30 * * * *'
 
@@ -21,6 +21,6 @@ jobs:
         sudo apt update
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Run Node
+    - name: Run node
       run: |
        timeout 1800 python node.py      
