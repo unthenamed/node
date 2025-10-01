@@ -1,3 +1,3 @@
-http://dugmufsp:j5k3akyc65ut@107.172.163.27:6543
-http://dugmufsp:j5k3akyc65ut@64.137.96.74:6641
-http://dugmufsp:j5k3akyc65ut@154.203.43.247:5536
+http://unthenamed:unthenamed@107.172.163.27:6543
+http://unthenamed:unthenamed@64.137.96.74:6641
+http://unthenamed:unthenamed@154.203.43.247:5536
